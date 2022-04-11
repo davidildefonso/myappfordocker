@@ -1,0 +1,12 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "just an app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+	"start": "node ./index.js"
+  },
+  "author": "david",
+  "license": "ISC"
+}
