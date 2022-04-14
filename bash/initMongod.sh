@@ -1,0 +1,1 @@
+echo "mongod --dbpath=/database"
