@@ -6,15 +6,15 @@ const { connection, closeConnection } = require(path.join(__dirname, 'src/db/con
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.listen(port, async () => {
-	console.log(`app listening on port ${port}`)
-	try {
-		await connection()
-		console.log('connected')
-	} catch (error) {
-		console.error('error:', error)
-	}finally{
-		closeConnection()
-		console.log('connection closed')
-	}
-})
+try {
+	await connection()
+	console.log('connected')
+	app.listen(port, async () => {
+		console.log(`app listening on port ${port}`)
+		
+	})
+} catch (error) {
+	console.error('error:', error)
+	closeConnection()
+	console.log('connection closed')
+}
