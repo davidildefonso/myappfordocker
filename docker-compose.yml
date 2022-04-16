@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  app:
+    image: node:16-alpine
+    command: sh -c "apk add --no-cache python3 g++ make && npm install --production && npm install pm2 -g && npm run build-react && pm2-runtime index.js"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - HOST=mongodb
+  mongo:
+    image: mongo
+    volumes:
+      - app-mongodb-data:/var/lib/mongodb
+volumes:
+  app-mongodb-data:
